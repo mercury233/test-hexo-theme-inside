@@ -29,4 +29,16 @@ jobs:
         run: |
           npm install hexo-cli -g
           npm install
-          hexo g
+          hexo generate
+
+      - name: Test hexo build with search on and ssr on
+        run: |
+          cp 'ssr on search on.yml' _config.inside.yml
+          hexo clean
+          hexo generate
+
+      - name: Test hexo build with search off and ssr on
+        run: |
+          cp 'ssr on.yml' _config.inside.yml
+          hexo clean
+          hexo generate
